@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="wxp.app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+
+<div ng-view></div>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-route/angular-route.js"></script>
+<script src="./model.js"></script>
+<script src="services/jsonpService.js"></script>
+<script src="movie_detail/detail_controller.js"></script>
+<script src="movie_list/list_controller.js"></script>
+
+
+<script>
+    var app = angular.module("wxp.app",['ngRoute',"douban.ml.detail",'douban.ml.list']);
+    app.config(function ($routeProvider) {
+        $routeProvider
+                .when('/detail/:id',{
+                    templateUrl:'./movie_detail/detail_temp.html',
+                    controller:"detailController"
+                })
+                .when('/list/:category/:page',{
+                    templateUrl:'./movie_list/list_temp.html',
+                    controller:"listController"
+                })
+                .otherwise({
+                    /*templateUrl:'./movie_list/list_temp.html',
+                    controller:"listController"*/
+                    redirectTo:'/list/top250/1'
+                })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<div>
+    <div ng-if="isWaiting">
+        正在加载中...
+    </div>
+    <div ng-if="!isWaiting">
+        <div>
+            <a href="#/list/in_theaters/1" ng-class='{btn:true}'>正在热映</a>
+            <a href="#/list/coming_soon/1" ng-class='{btn:true}'>即将上映</a>
+            <a href="#/list/top250/1" ng-class='{btn:true}'>Top250</a>
+        </div>
+        <div ng-style='{"margin-bottom":"10px","margin-top":"10px"}'>
+            <p ng-style='{"text-align":"center","line-height":"35px","padding":"0 15px"}'>
+                <a href="#{{prev}}" ng-class="{btn:true,'btn-primary':true,'pull-left':true}">上一页</a>
+                当前是{{page}}页，共{{totalPage}}页
+                <a href="#{{next}}" ng-class="{btn:true,'btn-primary':true,'pull-right':true}">下一页</a>
+            </p>
+        </div>
+        <div class="row" style="margin-left:0px;margin-right:0px;margin-top: 10px;">
+            <div class="col-xs-4" ng-repeat="subject in listData.subjects">
+                <div class="thumbnail img-thumbnail">
+                    <img ng-src="{{subject.images.large}}"
+                         style="height: 420px;overflow-y: hidden;"
+                         alt="{{subject.title}}">
+                    <div class="caption" style="text-align:center;">
+                        <a ng-href="#/detail/{{subject.id}}">{{subject.title}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-style='{"margin-bottom":"10px","margin-top":"10px"}'>
+            <p ng-style='{"text-align":"center","line-height":"35px","padding":"0 15px"}'>
+                <a href="#{{prev}}" ng-class="{btn:true,'btn-primary':true,'pull-left':true}">上一页</a>
+                当前是{{page}}页，共{{totalPage}}页
+                <a href="#{{next}}" ng-class="{btn:true,'btn-primary':true,'pull-right':true}">下一页</a>
+            </p>
+        </div>
+    </div>
+</div>
